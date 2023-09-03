@@ -35,7 +35,7 @@ class _QuizlerState extends State<Quizler> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.black87,
+        backgroundColor: Colors.blueGrey,
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.black),
           title: Text('Quizzler'),
