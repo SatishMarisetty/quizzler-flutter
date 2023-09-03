@@ -35,7 +35,7 @@ class _QuizlerState extends State<Quizler> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: Colors.black54,
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.black),
           title: Text('Quizzler'),
@@ -79,7 +79,10 @@ class _QuizlerState extends State<Quizler> {
                         );
                       }
                     setState(() {
-                      i++;
+                      if (i<Questions.length-1)
+                        {
+                          i++;
+                        }
                     });
                   },
                 ),
@@ -95,27 +98,28 @@ class _QuizlerState extends State<Quizler> {
                   ),
                   onPressed: ()
                   {
-                    if (Answers[i]==true)
-                    {
+                    if (Answers[i]==true) {
+                      icons.add(
+                          Icon(Icons.close, color: Colors.red,)
+                      );
+                    }
+                    else{
                       icons.add(
                           Icon(Icons.check,color: Colors.green,)
                       );
                     }
-                    else
-                    {
-                      icons.add(
-                          Icon(Icons.close,color: Colors.red,)
-                      );
-                    }
                     setState(() {
-                      i++;
+                      if (i<Questions.length-1)
+                      {
+                        i++;
+                      }
                     });
                   },
                 ),
               ),
               Container(
                 height: 25,
-                padding: EdgeInsets.fromLTRB(5, 0, 5, 0),
+                padding: EdgeInsets.only(left: 15),
                 child: Row(
                   children: icons
                 ),
