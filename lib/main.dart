@@ -1,35 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'Questions.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() {
   runApp(const Quizler());
 }
-int i=0;
-List<Widget> icons=[];
-List Questions=[
-  'Sriram is a Gay',
-  'Harshitha had crush on Satish',
-  'Chand is Bad Boy',
-  'Dhaneshwar likes eating shit',
-  'Pawan Kalyan is God being',
-  'Prabhas is catagorized as Male',
-];
-List Answers=[
-  true,
-  true,
-  false,
-  true,
-  true,
-  false
-];
 
+List<Widget> icons=[];
 class Quizler extends StatefulWidget {
   const Quizler({super.key});
-
   @override
   State<Quizler> createState() => _QuizlerState();
 }
-
 class _QuizlerState extends State<Quizler> {
   @override
   Widget build(BuildContext context) {
@@ -47,10 +30,10 @@ class _QuizlerState extends State<Quizler> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Expanded(
-                flex: 4,
+                flex: 5,
                   child: Center(
                     child: Text(
-                        Questions[i],
+                        Quiz().getQuestion(),
                       style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),
                     ),
                   ),
@@ -61,12 +44,12 @@ class _QuizlerState extends State<Quizler> {
                   child: Card(
                   color: Colors.green,
                     child: Center(
-                      child: Text('True'),
+                      child: Text('True',style: TextStyle(color: Colors.white),),
                     ),
               ),
                   onPressed: ()
                   {
-                    if (Answers[i]==true)
+                    if (Quiz().getAnswer()==true)
                       {
                         icons.add(
                           Icon(Icons.check,color: Colors.green,)
@@ -79,10 +62,7 @@ class _QuizlerState extends State<Quizler> {
                         );
                       }
                     setState(() {
-                      if (i<Questions.length-1)
-                        {
-                          i++;
-                        }
+                      Quiz().nextQuestion();
                     });
                   },
                 ),
@@ -93,12 +73,12 @@ class _QuizlerState extends State<Quizler> {
                   child: Card(
                     color: Colors.red,
                     child: Center(
-                      child: Text('false'),
+                      child: Text('false',style: TextStyle(color: Colors.white,),),
                     ),
                   ),
                   onPressed: ()
                   {
-                    if (Answers[i]==true) {
+                    if (Quiz().getAnswer()==true) {
                       icons.add(
                           Icon(Icons.close, color: Colors.red,)
                       );
@@ -109,10 +89,7 @@ class _QuizlerState extends State<Quizler> {
                       );
                     }
                     setState(() {
-                      if (i<Questions.length-1)
-                      {
-                        i++;
-                      }
+                      Quiz().nextQuestion();
                     });
                   },
                 ),
