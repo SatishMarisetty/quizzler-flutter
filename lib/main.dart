@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'Questions.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 void main() {
-  runApp(const Quizler());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Quizler(),
+  ));
 }
 
 List<Widget> icons=[];
@@ -16,8 +18,7 @@ class Quizler extends StatefulWidget {
 class _QuizlerState extends State<Quizler> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.black54,
         appBar: AppBar(
           systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.black),
@@ -62,7 +63,7 @@ class _QuizlerState extends State<Quizler> {
                         );
                       }
                     setState(() {
-                      Quiz().nextQuestion();
+                      Quiz().nextQuestion(context);
                     });
                   },
                 ),
@@ -89,7 +90,7 @@ class _QuizlerState extends State<Quizler> {
                       );
                     }
                     setState(() {
-                      Quiz().nextQuestion();
+                      Quiz().nextQuestion(context);
                     });
                   },
                 ),
@@ -104,7 +105,6 @@ class _QuizlerState extends State<Quizler> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
