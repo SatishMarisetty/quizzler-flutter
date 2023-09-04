@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import 'QuestionBank.dart';
 import 'package:quizler/main.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'QuestionBank.dart';
+import 'package:flutter/material.dart';
 class Quiz{
   static int _i=0;
   List<Question> _Questions = [
@@ -18,20 +18,19 @@ class Quiz{
   {
     if(_i<_Questions.length-1){_i++;}
     else{
+      _i=0;
+      icons=[];
       Alert(
         context: context,
-        title: "Quiz Completed!",
+        type: AlertType.success,
+        title: "Completed!",
         buttons: [
           DialogButton(
             child: Text(
               "Retake",
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
-            onPressed: () {
-              icons=[];
-              _i=0;
-              Navigator.pop(context);
-            },
+            onPressed: () => Navigator.pop(context),
             width: 120,
           )
         ],
@@ -47,4 +46,3 @@ class Quiz{
     return _Questions[_i].getAnswer();
   }
 }
-

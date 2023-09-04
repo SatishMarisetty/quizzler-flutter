@@ -8,7 +8,6 @@ void main() {
     home: Quizler(),
   ));
 }
-
 List<Widget> icons=[];
 class Quizler extends StatefulWidget {
   const Quizler({super.key});
@@ -62,8 +61,8 @@ class _QuizlerState extends State<Quizler> {
                             Icon(Icons.close,color: Colors.red,)
                         );
                       }
+                    Quiz().nextQuestion(context);
                     setState(() {
-                      Quiz().nextQuestion(context);
                     });
                   },
                 ),
@@ -89,8 +88,8 @@ class _QuizlerState extends State<Quizler> {
                           Icon(Icons.check,color: Colors.green,)
                       );
                     }
+                    Quiz().nextQuestion(context);
                     setState(() {
-                      Quiz().nextQuestion(context);
                     });
                   },
                 ),
